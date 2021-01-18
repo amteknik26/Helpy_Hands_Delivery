@@ -1,2 +1,0 @@
-# helpy-hands
-DBMS project.
