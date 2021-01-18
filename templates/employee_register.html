@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Helpy Hands</title>
+    <link href="{{url_for('static',filename='css/main_styles.css')}}" rel="stylesheet">
+</head>
+<body>
+  <header>
+      <nav>
+          <ul>
+            <li><a href="/index">Home</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/login">Login</a></li>
+          </ul>
+          <h1>Employee Registration</h1>
+      </nav>
+</header>
+
+        
+<h1 style="text-align: center; font-size: 25px; margin-top: 10%">Fill the below data</h1>
+    
+<form style="text-align: center; margin-top: 6%;" action='/add_employee_button' method="POST">
+    <div >
+        <input style="background-color: #d3d1d1; padding: 10px 20px;" type="text" name="name" placeholder="Enter your name">
+    </div>
+    <br>
+    <div >
+        <input style="background-color: #d3d1d1; padding: 10px 20px;" type="text" name="address" placeholder="Enter your address">
+    </div>
+    <br>
+    <div>
+        <input style="background-color: #d3d1d1; padding: 10px 20px;" type="text" name="phone" placeholder="Enter your phone number">
+    </div>
+    <br>
+    <div>
+        <input style="background-color: #d3d1d1; padding: 10px 20px;" type="text" name="email" placeholder="Enter your Email ID">
+    </div>
+    <br>
+    <button style="margin-top: 30px;" type="submit" value="Submit">Submit</button>
+</form>
+
+  
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Helpy Hands</title>
+    <link href="{{url_for('static',filename='css/main_styles.css')}}" rel="stylesheet">
+</head>
+
+<body>
+  <header>
+      <nav>
+          <ul>
+            <li><a href="/index">Home</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/login">Login</a></li>
+          </ul>
+      </nav>
+</header>
+
+<h2>Customer Login</h2>
+<form method="POST" action="/customer_login_button" class="login_form">
+    
+        <input style="background-color: #d3d1d1; padding: 10px 20px;" type="text" name="customer_name" placeholder="Name">
+    
+            <input style="background-color: #d3d1d1; padding: 10px 20px;" type="text" name="customer_phone" placeholder="Phone Number">
+        <button style="text-decoration: none;" type="submit">Login</button>
+    
+        <p class="message">Not Registered? <a href="/customer_register">Sign up now</a></p> 
+     
+    
+</form>
+
+</form>
+
+<h2>Employee Login</h2>
+<form method="POST" action="/employee_login_button" class="login_form">
+   
+        <input style="background-color: #d3d1d1; padding: 10px 20px;" type="text" name="employee_name" placeholder="Name">
+    
+        <input style="background-color: #d3d1d1; padding: 10px 20px;" type="text" name="employee_phone" placeholder="Phone Number">
+    
+        <input style="background-color: #d3d1d1; padding: 10px 20px;" type="password" name="employee_password" placeholder="Password">
+        <button style="text-decoration: none;" type="submit">Login</button>
+    
+    <p class="message">Not Registered? <a href="/employee_register">Sign up now</a></p>
+    
+    
+</form>
+
+<h2>Admin Login</h2>
+<form method="POST" action="/admin_login_button" class="login_form">
+    
+        <input style="background-color: #d3d1d1; padding: 10px 20px;" type="text" name="admin_name" placeholder="Name">
+   
+    
+        <input style="background-color: #d3d1d1; padding: 10px 20px;" type="password" name="admin_password" placeholder="Password">
+        <button style="text-decoration: none;" type="submit">Login</button>
+    
+    
+</form>
+  
+</body>
+</html>

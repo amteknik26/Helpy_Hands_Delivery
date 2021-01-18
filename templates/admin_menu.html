@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{{url_for('static',filename='css/main_styles.css')}}" rel="stylesheet">
+    <title>Admin Menu</title>
+</head>
+<body>
+  <header>
+      <nav>
+          <ul>
+            <li><a href="/index">Home</a></li>
+            <li><a href="/about">About</a></li>
+          </ul>
+          <h1>Admin Menu</h1>
+      </nav>
+</header>
+    <form>
+    <! -- Using this button form inside a form will cause conflict. CAution advised     ! -->
+    <button formaction="/admin_customer_details">Customer Details</button>     <button formaction="/admin_employee_details">Employee Details</button> 
+    <br>
+    <br>
+    <button formaction="/admin_order_details">Order Details</button>     <button formaction="/admin_store_details">Store Details</button> 
+    <br>
+    <br>
+    <button formaction="/admin_payment_details">Payment Details</button>     <button formaction="/admin_delivery_details">Delivery Details</button> 
+    </form>
+    <form action="/send_email" method="POST">
+        <h2> Enter order id to send delivery details to customer's Email:</h2>
+        <input style="padding: 20px 0; background-color: #d3d1d1; padding: 10px 20px;" type="text" name="order_id" placeholder="Order ID">
+        <br>
+        <input type="submit" value="Send">
+    </form>
+  
+</body>
+</html>

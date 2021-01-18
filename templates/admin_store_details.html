@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{{url_for('static',filename='css/main_styles.css')}}" rel="stylesheet">
+    <title>Store Details</title>
+</head>
+<body>
+  <header>
+      <nav>
+          <ul>
+              <li><a href="/index">Home</a></li>
+              <li><a href="/about">About</a></li>
+              <li><a href="/admin_menu">Menu</a></li>
+          </ul>
+          <h1>Store Details</h1>
+      </nav>
+</header>
+<h1 style="text-align: left; margin-top: 107px;">Store Details:</h1>
+
+    <table style="border: 1px solid black; text-align: left;border-collapse: collapse;">
+        <tr style="border: 1px solid black;">
+            <th style="border: 1px solid black;">Store ID</th>
+            <th style="border: 1px solid black;">Store Name</th>
+            <th style="border: 1px solid black;">Store Address</th>
+            <th style="border: 1px solid black;">Store Number</th>
+            <th style="border: 1px solid black;">Action</th>
+        </tr>
+
+        {% for s in store %} 
+                <tr style="border: 1px solid black;">
+                    <td style="border: 1px solid black;">{{s[0]}}</td>
+                    <td style="border: 1px solid black;">{{s[1]}}</td>
+                    <td style="border: 1px solid black;">{{s[2]}}</td>
+                    <td style="border: 1px solid black;">{{s[3]}}</td>
+                    <td><a href="/delete_stores/{{s[0]}}"><button onclick="return confirm('Are you sure to Delete data');" value="DELETE" class="btn btn-danger">Delete </button> </a> </td>    
+                </tr>
+        {% endfor %}
+
+    </table>
+    <br>
+    <form>
+        <button formaction="/admin_add_store">Add New Store</button>
+        <! -- Using this button form inside a form will cause conflict. CAution advised     ! -->
+    </form>
+</div>
+    <br> 
+    
+    
+</body>
+</html>

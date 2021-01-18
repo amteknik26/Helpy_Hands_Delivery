@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="{{url_for('static',filename='css/main_styles.css')}}" rel="stylesheet">
+        <title>Customer Details</title>
+    </head>
+    <body>
+      <header>
+        <nav>
+            <ul>
+                <li><a href="/index">Home</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/employee_menu">Menu</a></li>
+            </ul>
+        </nav>
+    </header>
+   
+        
+    <h2 style="text-align: left; margin-top: 107px;">Customer Details:</h2>
+      <table style="border: 1px solid black; text-align: left;border-collapse: collapse;">
+        <tr style="border: 1px solid black;">
+            <th style="border: 1px solid black;">Name</th>
+            <th style="border: 1px solid black;">Address</th>
+            <th style="border: 1px solid black;">Phone Number</th>
+            <th style="border: 1px solid black;">Email</th>
+        </tr>
+        {% for c in cust %} 
+            <form action="" method="POST"></form>
+                <tr style="border: 1px solid black;"></tr>
+                    <td style="border: 1px solid black;">{{c[0]}}</td>
+                    <td style="border: 1px solid black;">{{c[1]}}</td>
+                    <td style="border: 1px solid black;">{{c[2]}}</td>
+                    <td style="border: 1px solid black;">{{c[3]}}</td>
+                </tr>
+            </form>
+        {% endfor %}
+    </table>
+    </body>
+</html>

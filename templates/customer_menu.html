@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{{url_for('static',filename='css/main_styles.css')}}" rel="stylesheet">
+    <title>Customer Menu</title>
+</head>
+<body>
+  <header>
+      <nav>
+          <ul>
+              <li><a href="/index">Home</a></li>
+              <li><a href="/about">About</a></li>
+          </ul>
+          <h1>Hello Customer !</h1>
+      </nav>
+</header>
+    <form>
+    <! -- Using this button form inside a form will cause conflict. CAution advised     ! -->
+    <button formaction="/customer_place_order">Place Order</button>
+    <br>
+    <br>
+    <button formaction="/customer_view_order">View Order</button>
+    <br>
+    <br>
+    <button formaction="/customer_payment_details">Payment Details</button>
+    <br>
+    <br>
+    <button formaction="/customer_delivery_details">Delivery Details</button>
+    </form>
+  
+</body>
+</html>

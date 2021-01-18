@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{{url_for('static',filename='css/main_styles.css')}}" rel="stylesheet">
+    <title>Place Order</title>
+</head>
+<body>
+  <header>
+      <nav>
+          <ul>
+              <li><a href="/index">Home</a></li>
+              <li><a href="/about">About</a></li>
+              <li><a href="/customer_menu">Menu</a></li>
+          </ul>
+          <h1>Place Order</h1>
+      </nav>
+</header>
+<h2 style="text-align: left; margin-top: 107px;">Available Stores:</h2>
+    <table style="border: 1px solid black; text-align: left;border-collapse: collapse;">
+      <tr style="border: 1px solid black;">
+          <th style="border: 1px solid black;">Store ID</th>
+          <th style="border: 1px solid black;">Store Name</th>
+          <th style="border: 1px solid black;">Store Location</th>
+      </tr>
+      {% for s in store %} 
+          <form action="" method="POST"></form>
+              <tr style="border: 1px solid black;"></tr>
+                  <td style="border: 1px solid black;">{{s[0]}}</td>
+                  <td style="border: 1px solid black;">{{s[1]}}</td>
+                  <td style="border: 1px solid black;">{{s[2]}}</td>
+              </tr>
+          </form>
+      {% endfor %}
+  </table>
+
+<form style="text-align: left; margin-top: 6%;" action='/customer_place_button' method="POST">
+    <h2> To place an order, Enter your product names along with quantity:</h2>
+      <input  style="padding: 20px 0; background-color: #d3d3d1; padding: 10px 200px;" type="text" name="order" placeholder="">
+    <br>
+
+    <h2> Select store from table:</h2>
+      <input style="padding: 20px 0; background-color: #d3d1d1; padding: 10px 20px;" type="text" name="id" placeholder="Enter Store ID">
+    <br>
+
+    <h2> Select Payment Method:</h2>
+    <h3> (Cash on Delivery, Google Pay, Amazon pay)</h3>
+    <input style="padding: 20px 0; background-color: #d3d1d1; padding: 10px 20px;" type="text" name="payment" placeholder="">
+    <br>
+    <button style="margin-top: 50px;" type="submit" value="Submit">Place Order </button>
+  </form>
+    
+  
+    
+
+        
+  
+</body>
+</html>

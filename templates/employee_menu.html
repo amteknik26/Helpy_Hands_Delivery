@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{{url_for('static',filename='css/main_styles.css')}}" rel="stylesheet">
+    <title>Employee Menu</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/index">Home</a></li>
+                <li><a href="/about">About</a></li>
+            </ul>
+            <h1>Order Details</h1>
+        </nav>
+    </header>
+
+    <h2>Enter order ID to check customer orders:</h2>
+    <form action='/employee_search_orders' method="POST">
+        <input id="searchorder"  name="searchorder" type="text" placeholder="ID" >
+        <input type="submit" value="Search">
+    </form>
+    <br>
+    <br>
+    <h2>Enter Customer Number to finalize payment:</h2>
+    <form action='/employee_finalize_payment' method="POST">
+    <input id="cst_no"  name="cst_no" type="text" placeholder="Number" >
+    <input type="submit" value="Search">
+    <br>
+    </form>
+    <br>
+    <h2>Enter Employee Number to finalize delivery:</h2>
+    <form action='/employee_finalize_delivery' method="POST">
+    <input id="cst_no"  name="emp_no" type="text" placeholder="Number" >
+    <input type="submit" value="Search">   
+    
+    </form>
+  
+</body>
+</html>

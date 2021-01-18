@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{{url_for('static',filename='css/main_styles.css')}}" rel="stylesheet">
+    <title>Delivery Details</title>
+</head>
+<body>
+  <header>
+    <nav>
+        <ul>
+            <li><a href="/index">Home</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/admin_menu">Menu</a></li>
+        </ul>
+    </nav>
+</header>
+    <h2 style="text-align: left; margin-top: 107px;">Delivery Details:</h2>
+    <table style="border: 1px solid black; text-align: left;border-collapse: collapse;">
+      <tr style="border: 1px solid black;">
+          <th style="border: 1px solid black;">Employee Number</th>
+          <th style="border: 1px solid black;">Customer Number</th>
+          <th style="border: 1px solid black;">Delivery ID</th>
+          <th style="border: 1px solid black;">Delivery date</th>
+          <th style="border: 1px solid black;">Delivery Time</th>
+          <th style="border: 1px solid black;">Delivery Status</th>
+          <th style="border: 1px solid black;">Delivery Ratings</th>
+          <th style="border: 1px solid black;">Actions</th>
+
+      </tr>
+      {% for d in delivery %} 
+          
+              <tr style="border: 1px solid black;"></tr>
+                  <td style="border: 1px solid black;">{{d[0]}}</td>
+                  <td style="border: 1px solid black;">{{d[1]}}</td>
+                  <td style="border: 1px solid black;">{{d[2]}}</td>
+                  <td style="border: 1px solid black;">{{d[3]}}</td>
+                  <td style="border: 1px solid black;">{{d[4]}}</td>
+                  {% if d[5] == 0 %}
+                    <td style="border: 1px solid black;">Pending</td>
+                  {% endif %}
+                  {% if d[5] == 1 %}
+                    <td style="border: 1px solid black;">Successful</td>
+                  {% endif %}
+                  <td style="border: 1px solid black;">{{d[6]}}</td>
+                  <td><a href="/delete_delivery/{{d[2]}}"><button onclick="return confirm('Are you sure to Delete data');" value="DELETE" class="btn btn-danger">Delete </button> </a> </td>    
+                  
+              </tr>
+          
+      {% endfor %}
+  </table>
+</body>
+</html>
