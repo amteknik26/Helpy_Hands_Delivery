@@ -17,23 +17,27 @@ def Send_mail(val):
     message['From'] = maildid
     message['To'] = val[2]
     # replace the subject
-    message['Subject'] = 'Enter the sub'
+    message['Subject'] = 'Your Delivery details from Helpy Hands ;)'
 
     message.set_content("""
-            TraSafe, Traffic Violation Fine Generator
-            Name : {}
-            Ord Id : {}
-            ord det : {}
-            store id : {}
-            store name : {}
-            del id : {}
-            del date : {}
-            del time : {}
-            payment type : {}
-            total price : {}
-            The above details has to be paid before 6 months of the report generation,
-            Thank you.
-        """.format(val[3], val[0], val[1], val[4], val[5],  val[6], val[7], val[8], val[9], val[10] ))  
+            Hi {}
+            Thank you for ordering groceries from {}
+            
+            ORDER ID: {}
+            Order details: {}
+
+            Delivery ID : {}
+            Delivery date : {}
+            Delivery time : {}
+
+            Paid: ₹{}
+            Payment type : {}
+            
+
+            
+            Thank You for buying from Helpy Hands. We can't wait to serve you again !
+
+        """.format(val[3], val[5], val[0], val[1], val[6], val[7], val[8], val[10], val[9]))  
 
     with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
         smtp.login(maildid, password)
@@ -45,5 +49,3 @@ def Send_mail(val):
 
         except:
             print('\n\nMail failed to send')
-
-

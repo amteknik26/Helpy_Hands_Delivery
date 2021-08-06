@@ -1,40 +1,3 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="{{url_for('static',filename='css/main_styles.css')}}" rel="stylesheet">
-    <title>Admin Menu</title>
-</head>
-<body>
-  <header>
-      <nav>
-          <ul>
-            <li><a href="/index">Home</a></li>
-            <li><a href="/about">About</a></li>
-          </ul>
-          <h1>Admin Menu</h1>
-      </nav>
-</header>
-    <form>
-    <button formaction="/admin_customer_details">Customer Details</button>     <button formaction="/admin_employee_details">Employee Details</button> 
-    <br>
-    <br>
-    <button formaction="/admin_order_details">Order Details</button>     <button formaction="/admin_store_details">Store Details</button> 
-    <br>
-    <br>
-    <button formaction="/admin_payment_details">Payment Details</button>     <button formaction="/admin_delivery_details">Delivery Details</button> 
-    </form>
-    <form action="/send_email" method="POST">
-        <h2> Enter order id to send delivery details to customer's Email:</h2>
-        <input style="padding: 20px 0; background-color: #d3d1d1; padding: 10px 20px;" type="text" name="order_id" placeholder="Order ID">
-        <br>
-        <input type="submit" value="Send">
-    </form>
-  
-</body>
-</html>   -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -46,10 +9,8 @@
   <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
   <script type="text/javafscript" src="http://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=lBGdiny-DVZEu-sHn23ae5n8RhqYAZSFlj1CSDIEGks2aAsfIRtodz-bA-9ky8JU" charset="UTF-8"></script>
   <link rel="stylesheet" crossorigin="anonymous" href="http://gc.kis.v2.scr.kaspersky-labs.com/E3E8934C-235A-4B0E-825A-35A08381A191/abn/main.css?attr=aHR0cDovLzEyNy4wLjAuMTo1MDAwL2luZGV4" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
 </head>
   <style>
   .menu-container{
@@ -58,8 +19,8 @@
   }
   .menu-form{
     min-height:400px;
-    width: auto;
-    
+    border-left: 5px solid  #0497c0;
+    border-right: 5px solid #0497c0;
   } 
   .menu-form,h1{
     text-align: center;
@@ -72,10 +33,10 @@
   }
   h2 {
     font-size: 24px;
+    text-transform: uppercase;
     color: #303030;
     font-weight: 600;
     margin-bottom: 30px;
-    font-family: Montserrat, sans-serif;
   }
   h4,h3{
     font-size: 19px;
@@ -110,32 +71,28 @@
     border-color: transparent;
     color: #fff !important;
   } 
-  .button {
-    background-color:  white;
-    color: black;
-    border: 2px solid #008CBA;
-    font-family: Montserrat, sans-serif;
+  button {
+    border: none;
+    color: white;
+    padding: 16px 32px;
     text-align: center;
     text-decoration: none;
+    display: inline-block;
     font-size: 16px;
+    transition-duration: 0.4s;
     cursor: pointer;
-    width: 200px;
-    height : 75px;
-  } 
-  input{
-      text-align: center;
-      font-family: Montserrat, sans-serif;
   }
-  .btn {
-  background-color: #037a9b; 
-  border: none; 
+  button {
+  background-color: #0497c0;
   color: white;
-  font-size: 20px; 
-  cursor: pointer; 
-}
-.btn:hover {
-  background-color: #04a6d5;
-}
+  border: 2px solid #008CBA;
+  font-family: Montserrat, sans-serif;
+  }
+ .button:hover {
+  background-color: white; 
+  color: black;
+  } 
+
   </style>
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container">
@@ -150,34 +107,49 @@
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
         <li><a href="/index">ABOUT</a></li>
-        <li><a href="/admin_menu">MENU</a></li>
+       <!-- <li><a href="login.html">SERVICES</a></li>
+        <li><a href="#portfolio">PORTFOLIO</a></li>
+        <li><a href="#pricing">PRICING</a></li>
+        <li><a href="#contact">CONTACT</a></li> --> 
       </ul>
     </div>
   </div>
 </nav>
+
+<!--<form>
+<div></div>
+<button formaction="/customer_place_order">Place Order</button>
+<br>
+<br>
+<button formaction="/customer_view_order">View Order</button>
+<br>
+<br>
+<button formaction="/customer_payment_details">Payment Details</button>
+<br>
+<br>
+<button formaction="/customer_delivery_details">Delivery Details</button>
+</div>
+</form>-->
 <br><br>
 <div class="container menu-container">
   <div class="row">
-      <div class="col-md-offset-4 col-md-6 menu-form" >
-          <h1>ADMIN</h1><br>
-          <form>
+      <div class="col-md-offset-4 col-md-4 menu-form" >
+          <h1>HEY!</h1>
+          <h3>We are here to serve YOU</h3>
+          <form  action="/add_customer_button">
               <div class="form-group">
-                <button formaction="/admin_customer_details" class="button">Customer Details</button>   &nbsp &nbsp &nbsp<button formaction="/admin_employee_details" class="button">Employee Details</button>
+                <button class="button" formaction="/customer_place_order">Place Order</button>
               </div>
-              <br>
               <div class="form-group">
-                <button formaction="/admin_order_details" class="button" >Order Details</button>  &nbsp  &nbsp &nbsp <button formaction="/admin_store_details" class="button">Store Details</button> 
+                <button class="button" formaction="/customer_view_order">View Order</button>
               </div>
-              <br>
+              <div class="form-group">
+                <button class="button"formaction="/customer_payment_details">Payment Details</button>
+              </div>
               <div  class="form-group">
-                <button formaction="/admin_payment_details" class="button">Payment Details</button>  &nbsp  &nbsp &nbsp <button formaction="/admin_delivery_details" class="button">Delivery Details</button>
+                <button class="button" formaction="/customer_delivery_details">Delivery Details</button>
               </div>
           </form>
-          <br>
-          <form action="/send_email" method="POST">
-            <h2>Send invoice to Customer</h2>
-            <input class="w3-input w3-border" type="text" name="order_id" placeholder="Order ID"> &nbsp <button type="submit" value="Search" class="btn"><i class="fa  fa-paper-plane"></i></button>
-        </form>
       </div>
   </div>
 </div>

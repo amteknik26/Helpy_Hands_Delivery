@@ -1,46 +1,147 @@
 <!DOCTYPE html>
-<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Helpy Hands</title>
-    <link href="{{url_for('static',filename='css/main_styles.css')}}" rel="stylesheet">
-</head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+    <script type="text/javafscript" src="http://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=lBGdiny-DVZEu-sHn23ae5n8RhqYAZSFlj1CSDIEGks2aAsfIRtodz-bA-9ky8JU" charset="UTF-8"></script>
+    <link rel="stylesheet" crossorigin="anonymous" href="http://gc.kis.v2.scr.kaspersky-labs.com/E3E8934C-235A-4B0E-825A-35A08381A191/abn/main.css?attr=aHR0cDovLzEyNy4wLjAuMTo1MDAwL2luZGV4" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  </head>
 <body>
-  <header>
-      <nav>
-          <ul>
-            <li><a href="/index">Home</a></li>
-            <li><a href="/about">About</a></li>
-            <li><a href="/login">Login</a></li>
-          </ul>
-          <h1>Employee Registration</h1>
-      </nav>
-</header>
+  <style>
+  .login-container{
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+.flash-container{
+    margin-top: 5%;
+    margin-bottom: 5%;
+  }
 
-        
-<h1 style="text-align: center; font-size: 25px; margin-top: 10%">Fill the below data</h1>
-    
-<form style="text-align: center; margin-top: 6%;" action='/add_employee_button' method="POST">
-    <div >
-        <input style="background-color: #d3d1d1; padding: 10px 20px;" type="text" name="name" placeholder="Enter your name">
-    </div>
-    <br>
-    <div >
-        <input style="background-color: #d3d1d1; padding: 10px 20px;" type="text" name="address" placeholder="Enter your address">
-    </div>
-    <br>
-    <div>
-        <input style="background-color: #d3d1d1; padding: 10px 20px;" type="text" name="phone" placeholder="Enter your phone number">
-    </div>
-    <br>
-    <div>
-        <input style="background-color: #d3d1d1; padding: 10px 20px;" type="text" name="email" placeholder="Enter your Email ID">
-    </div>
-    <br>
-    <button style="margin-top: 30px;" type="submit" value="Submit">Submit</button>
-</form>
+.login-form-1{
+    padding: 5%;
+    min-height:400px;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+}
+.login-form-1 h3,h1{
+    text-align: center;
+    color: #333;
+}
 
-  
+.login-container form{
+    padding: 10%;
+}
+.btnSubmit
+{
+    width: 50%;
+    border-radius: 1rem;
+    padding: 1.5%;
+    border: none;
+    cursor: pointer;
+}
+.login-form-1 .btnSubmit{
+    font-weight: 600;
+    color: #fff;
+    background-color: #04a6d5;
+}
+.login-form-1 .ForgetPwd{
+    color: #04a6d5;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.navbar {
+        margin-bottom: 0;
+        background-color: #04a6d5;
+        z-index: 9999;
+        border: 0;
+        font-size: 12px !important;
+        line-height: 1.42857143 !important;
+        letter-spacing: 4px;
+        border-radius: 0;
+        font-family: Montserrat, sans-serif;
+        }
+
+        .navbar li a, .navbar .navbar-brand {
+        color: #fff !important;
+        }
+
+        .navbar-nav li a:hover, .navbar-nav li.active a {
+        color: #04a6d5 !important;
+        background-color: #fff !important;
+        }
+
+        .navbar-default .navbar-toggle {
+        border-color: transparent;
+        color: #fff !important;
+        }
+
+
+</style>
+
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+      </button>
+      <a class="navbar-brand" href="/index"><strong>HH</strong></a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+      </ul>
+    </div>
+  </div>
+</nav> 
+
+<div class="container flash-container">
+    <div class=row>    
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            <div class="alert alert-danger alert-dismissible">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <ul class=flashes>
+            {% for message in messages %}
+            <strong>{{ message }}</strong>
+            {% endfor %}
+            </ul>
+            {% endif %}
+            {% endwith %}
+            {% block body %}{% endblock %} 
+            </div>
+    </div>
+</div>
+
+<div class="container login-container">
+            <div class="row">
+                <div class="col-md-offset-4 col-md-4 login-form-1">
+                    <h1>Employee Registration</h1>
+                    <h3>Enter your details below</h3>
+                    <form  action='/add_employee_button' method="POST">
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="name" placeholder="Enter your name " />
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="address" placeholder="Enter your address"/>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="phone" placeholder="Enter your phone number"/>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" name="email" placeholder="Enter your Email ID"/>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" class="btnSubmit" value="Register" />
+                        </div>
+                        <div class="form-group">
+                            <a href="/login" class="ForgetPwd">Already Registered?</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
 </body>
 </html>
+

@@ -1,42 +1,149 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="{{url_for('static',filename='css/main_styles.css')}}" rel="stylesheet">
-    <title>Employee Menu</title>
+  <title>Helpy Hands</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+  <script type="text/javafscript" src="http://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=lBGdiny-DVZEu-sHn23ae5n8RhqYAZSFlj1CSDIEGks2aAsfIRtodz-bA-9ky8JU" charset="UTF-8"></script>
+  <link rel="stylesheet" crossorigin="anonymous" href="http://gc.kis.v2.scr.kaspersky-labs.com/E3E8934C-235A-4B0E-825A-35A08381A191/abn/main.css?attr=aHR0cDovLzEyNy4wLjAuMTo1MDAwL2luZGV4" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
-<body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="/index">Home</a></li>
-                <li><a href="/about">About</a></li>
-            </ul>
-            <h1>Order Details</h1>
-        </nav>
-    </header>
-
-    <h2>Enter order ID to check customer orders:</h2>
-    <form action='/employee_search_orders' method="POST">
-        <input id="searchorder"  name="searchorder" type="text" placeholder="ID" >
-        <input type="submit" value="Search">
-    </form>
-    <br>
-    <br>
-    <h2>Enter Customer Number to finalize payment:</h2>
-    <form action='/employee_finalize_payment' method="POST">
-    <input id="cst_no"  name="cst_no" type="text" placeholder="Number" >
-    <input type="submit" value="Search">
-    <br>
-    </form>
-    <br>
-    <h2>Enter Employee Number to finalize delivery:</h2>
-    <form action='/employee_finalize_delivery' method="POST">
-    <input id="cst_no"  name="emp_no" type="text" placeholder="Number" >
-    <input type="submit" value="Search">   
-    
-    </form>
+  <style>
+  .menu-container{
+    margin-top: 5%;
+    margin-bottom: 5%;
+  }
+  .menu-form{
+    min-height:400px;
+    border-left: 5px solid  #0497c0;
+    border-right: 5px solid #0497c0;
+  } 
+  .menu-form,h1{
+    text-align: center;
+    color: #333;
+  }
+  body {
+    font: 400 15px Lato, sans-serif;
+    line-height: 1.8;
+    color: #757575;
+  }
+  h2 {
+    font-size: 24px;
+    text-transform: uppercase;
+    color: #303030;
+    font-weight: 600;
+    margin-bottom: 30px;
+  }
+  h4,h3{
+    font-size: 19px;
+    line-height: 1.375em;
+    color: #303030;
+    font-weight: 400;
+    margin-bottom: 30px;
+    font-family: Montserrat, sans-serif;
+  }  
+  .bg-grey {
+    background-color: #f6f6f6;
+  }
+  .navbar {
+    margin-bottom: 0;
+    background-color: #04a6d5;
+    z-index: 9999;
+    border: 0;
+    font-size: 12px !important;
+    line-height: 1.42857143 !important;
+    letter-spacing: 4px;
+    border-radius: 0;
+    font-family: Montserrat, sans-serif;
+  }
+  .navbar li a, .navbar .navbar-brand {
+    color: #fff !important;
+  }
+  .navbar-nav li a:hover, .navbar-nav li.active a {
+    color: #04a6d5 !important;
+    background-color: #fff !important;
+  }
+  .navbar-default .navbar-toggle {
+    border-color: transparent;
+    color: #fff !important;
+  } 
+  input{
+      text-align: center;
+      font-family: Montserrat, sans-serif;
+  }
+  label{
+      color: #037a9b;
+  }
   
+  .btn {
+  background-color: #037a9b; 
+  border: none; 
+  color: white;
+  padding-bottom: 5px;
+  padding-top: 5px;
+  font-size: 15px; 
+  cursor: pointer; 
+}
+
+.btn:hover {
+  background-color: #04a6d5;
+}
+
+  </style>
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="/index"><strong> HH </strong></a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/index">ABOUT</a></li>
+        <li><a href="/customer_menu">MENU</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<br><br>
+<div class="container menu-container">
+  <div class="row">
+      <div class="col-md-offset-4 col-md-4 menu-form" >
+          <h1>Delivery</h1>
+          <h3>You have pending deliveries.</h3>
+          <label><b>Search Orders</b></label>
+          <form action='/employee_search_orders' method="POST">
+                <input class="w3-input w3-border" id="searchorder"  name="searchorder" type="text" placeholder="Order ID"> &nbsp <button type="submit" value="Search" class="btn"><i class="fa fa-search"></i></button>
+          </form>
+          <br>
+          <label><b>Finalize Payment</b></label>
+          <form action='/employee_finalize_payment' method="POST">
+                <input class="w3-input w3-border" id="cst_no"  name="cst_no" type="text" placeholder="Customer Number"> &nbsp <button type="submit" value="Search" class="btn"><i class="fa fa-search"></i></button>
+          </form>
+          <br>
+          <label><b>Finalize Delivery</b></label>
+          <form action='/employee_finalize_delivery' method="POST">
+                <input class="w3-input w3-border" id="cst_no"  name="emp_no" type="text" placeholder="Employee Number"> &nbsp <button type="submit" value="Search" class="btn"><i class="fa fa-search"></i></button>
+          </form>
+      </div>
+  </div>
+</div>
 </body>
-</html>
+</html> 
+
+
+
+
+
+
+
+
+

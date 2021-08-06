@@ -50,11 +50,16 @@ def add_customer_record():
         cst_address = request.form.get("address")
         cst_phone = request.form.get("phone")
         cst_email = request.form.get("email")
-        c.execute("""
-                    INSERT INTO CUSTOMER(cst_name, cst_address, cst_phone, cst_email) VALUES(?,?,?,?)
-                    """, (cst_name, cst_address, cst_phone, cst_email))
-        conn.commit()
-        return "Signed Up Successfully!"
+        if len(cst_phone) == 10:
+            c.execute("""
+                        INSERT INTO CUSTOMER(cst_name, cst_address, cst_phone, cst_email) VALUES(?,?,?,?)
+                        """, (cst_name, cst_address, cst_phone, cst_email))
+            conn.commit()
+            flash ("Signed Up Successfully!")
+            return render_template("customer_register.html")
+        else:
+            flash ("Invalid Details")
+            return render_template("customer_register.html")
 
 @app.route('/employee_register')
 def render_add_employee_page():
@@ -63,18 +68,21 @@ def render_add_employee_page():
 @app.route('/add_employee_button', methods=['POST','GET'])
 def add_employee_record():
     with sql.connect("grocery.db") as conn:
-        c = conn.cursor()
-
+        c = conn.cursor()      
         emp_name = request.form.get("name")
         emp_address = request.form.get("address")
         emp_phone = request.form.get("phone")
         emp_email = request.form.get("email")
-        
-        c.execute("""
-                    INSERT INTO EMPLOYEE(emp_name, emp_address, emp_phone, emp_email) VALUES(?,?,?,?)
-                    """, (emp_name, emp_address, emp_phone, emp_email))
-        conn.commit()
-        return "Signed Up Successfully!"
+        if len(emp_phone) == 10:
+            c.execute("""
+                        INSERT INTO EMPLOYEE(emp_name, emp_address, emp_phone, emp_email) VALUES(?,?,?,?)
+                        """, (emp_name, emp_address, emp_phone, emp_email))
+            conn.commit()
+            flash ("Signed Up Successfully!")
+            return render_template("employee_register.html")
+        else:
+            flash ("Invalid Details")
+            return render_template("employee_register.html")
 
 @app.route('/customer_login_button', methods=['POST','GET'])
 def customer_login_button():
@@ -90,7 +98,8 @@ def customer_login_button():
                 session['CUSTOMER']=phone
                 return redirect('/customer_menu')  
             else:
-                return ("Credentials Not Found")
+                flash("Incorrect name/password")
+                return render_template("login.html")
 
 @app.route('/employee_login_button', methods=['POST','GET'])
 def employee_login_button():
@@ -107,7 +116,8 @@ def employee_login_button():
                     session['EMPLOYEE']=phone
                     return redirect('/employee_menu')  
             else:
-                return ("Credentials Not Found")
+                flash("MESSAGE")
+                return render_template("login.html")
 
 @app.route('/admin_login_button', methods=['POST','GET'])
 def admin_login_button():
@@ -119,7 +129,8 @@ def admin_login_button():
             if user_name == admin_name  and password == admin_password :
                     return redirect('/admin_menu')  
             else:
-                return ("Credentials Not Found")
+                 flash("MESSAGE")
+                 return render_template("login.html")
 
 @app.route('/add_store_button', methods=['POST'])
 def add_store_record():
@@ -187,7 +198,7 @@ def render_customer_delivery_button():
                     WHERE cst_phone = ?
                      """,(del_ratings,session['CUSTOMER']))
         conn.commit()
-        return "Thank you for rating the order!"
+        return "Thank you for rating US"
 
 @app.route('/admin_order_details')
 def render_admin_view_orders():
@@ -206,12 +217,13 @@ def render_admin_order_button():
         price = request.form.get("price")
         pay_stat = request.form.get("pay_stat")
         del_stat = request.form.get("del_stat")
+        order_id = request.form.get("order_id")
         c.execute(""" UPDATE ORDERS
                     SET emp_phone = ?,
                     order_status = ?,
                     order_price = ?
-                    WHERE cst_phone = ?
-                    """, (emp_no, status, price, cst_no))
+                    WHERE order_id = ?
+                    """, (emp_no, status, price, order_id))
         conn.commit()
         c.execute(""" UPDATE PAYMENT 
                     SET price = ?,
@@ -419,5 +431,5 @@ def send_email():
         """, (val, )).fetchone()
         print(data)
         mail.Send_mail(data)
-        return ("ok")
+        return ("Mail sent successfully")
     

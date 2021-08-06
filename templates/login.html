@@ -1,66 +1,216 @@
 <!DOCTYPE html>
-
-<html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Helpy Hands</title>
-    <link href="{{url_for('static',filename='css/main_styles.css')}}" rel="stylesheet">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+    <script type="text/javafscript" src="http://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=lBGdiny-DVZEu-sHn23ae5n8RhqYAZSFlj1CSDIEGks2aAsfIRtodz-bA-9ky8JU" charset="UTF-8"></script>
+    <link rel="stylesheet" crossorigin="anonymous" href="http://gc.kis.v2.scr.kaspersky-labs.com/E3E8934C-235A-4B0E-825A-35A08381A191/abn/main.css?attr=aHR0cDovLzEyNy4wLjAuMTo1MDAwL2luZGV4" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    
 </head>
-
 <body>
-  <header>
-      <nav>
-          <ul>
-            <li><a href="/index">Home</a></li>
-            <li><a href="/about">About</a></li>
-            <li><a href="/login">Login</a></li>
-          </ul>
-      </nav>
-</header>
+  <style>
+  .login-container{
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+  .flash-container{
+    margin-top: 5%;
+    margin-bottom: 1%;
+  }
+.login-form-1{
+    padding: 5%;
+    min-height:450px;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+}
+.login-form-1 h3{
+    text-align: center;
+    color: #333;
+}
+.login-form-2{
+    padding: 5%;
+    background: #04a6d5;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+    min-height:450px;
+}
+.login-form-2 h3{
+    text-align: center;
+    color: #fff;
+}
+.login-form-3{
+    padding: 5%;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+    min-height:450px;
+}
+.login-form-3 h3{
+    text-align: center;
+    color: #333;
+}
+.login-container form{
+    padding: 10%;
+}
+.btnSubmit
+{
+    width: 50%;
+    border-radius: 1rem;
+    padding: 1.5%;
+    border: none;
+    cursor: pointer;
+}
+.login-form-1 .btnSubmit{
+    font-weight: 600;
+    color: #fff;
+    background-color: #04a6d5;
+}
+.login-form-2 .btnSubmit{
+    font-weight: 600;
+    color: #04a6d5;
+    background-color: #fff;
+}
+.login-form-2 .ForgetPwd{
+    color: #fff;
+    font-weight: 600;
+    text-decoration: none;
+}
+.login-form-1 .ForgetPwd{
+    color: #04a6d5;
+    font-weight: 600;
+    text-decoration: none;
+}
+.login-form-3 .btnSubmit{
+    font-weight: 600;
+    color: #fff;
+    background-color:#04a6d5;
+}
+.login-form-3 .ForgetPwd{
+    color: #04a6d5;
+    font-weight: 600;
+    text-decoration: none;
+}
+.navbar {
+        margin-bottom: 0;
+        background-color: #04a6d5;
+        z-index: 9999;
+        border: 0;
+        font-size: 12px !important;
+        line-height: 1.42857143 !important;
+        letter-spacing: 4px;
+        border-radius: 0;
+        font-family: Montserrat, sans-serif;
+        }
 
-<h2>Customer Login</h2>
-<form method="POST" action="/customer_login_button" class="login_form">
-    
-        <input style="background-color: #d3d1d1; padding: 10px 20px;" type="text" name="customer_name" placeholder="Name">
-    
-            <input style="background-color: #d3d1d1; padding: 10px 20px;" type="text" name="customer_phone" placeholder="Phone Number">
-        <button style="text-decoration: none;" type="submit">Login</button>
-    
-        <p class="message">Not Registered? <a href="/customer_register">Sign up now</a></p> 
-     
-    
-</form>
+        .navbar li a, .navbar .navbar-brand {
+        color: #fff !important;
+        }
 
-</form>
+        .navbar-nav li a:hover, .navbar-nav li.active a {
+        color: #04a6d5 !important;
+        background-color: #fff !important;
+        }
 
-<h2>Employee Login</h2>
-<form method="POST" action="/employee_login_button" class="login_form">
-   
-        <input style="background-color: #d3d1d1; padding: 10px 20px;" type="text" name="employee_name" placeholder="Name">
-    
-        <input style="background-color: #d3d1d1; padding: 10px 20px;" type="text" name="employee_phone" placeholder="Phone Number">
-    
-        <input style="background-color: #d3d1d1; padding: 10px 20px;" type="password" name="employee_password" placeholder="Password">
-        <button style="text-decoration: none;" type="submit">Login</button>
-    
-    <p class="message">Not Registered? <a href="/employee_register">Sign up now</a></p>
-    
-    
-</form>
+        .navbar-default .navbar-toggle {
+        border-color: transparent;
+        color: #fff !important;
+        }
 
-<h2>Admin Login</h2>
-<form method="POST" action="/admin_login_button" class="login_form">
-    
-        <input style="background-color: #d3d1d1; padding: 10px 20px;" type="text" name="admin_name" placeholder="Name">
-   
-    
-        <input style="background-color: #d3d1d1; padding: 10px 20px;" type="password" name="admin_password" placeholder="Password">
-        <button style="text-decoration: none;" type="submit">Login</button>
-    
-    
-</form>
-  
+
+
+</style>
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>                        
+        </button>
+        <a class="navbar-brand" href="/index"><strong> HH </strong></a>
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="/index">ABOUT</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container flash-container">
+    <div class=row>    
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            <div class="alert alert-danger alert-dismissible">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <ul class=flashes>
+            {% for message in messages %}
+            <strong>{{ message }}</strong>
+            {% endfor %}
+            </ul>
+            {% endif %}
+            {% endwith %}
+            {% block body %}{% endblock %} 
+            </div>
+    </div>
+</div>
+
+<div class="container login-container">
+            <div class="row">
+                <div class="col-md-4 login-form-1">
+                    <h3>Customer</h3>
+                    <form method="POST" action="/customer_login_button">
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="customer_name" placeholder="Name"/>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Phone Number" name="customer_phone" />
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" class="btnSubmit" value="Login" />
+                        </div>
+                        <div class="form-group">
+                            <a href="/customer_register" class="ForgetPwd">Not Registered?</a>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-4 login-form-2">
+                    <h3>Employee</h3>
+                    <form method="POST" action="/employee_login_button" >
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="employee_name" placeholder="Name" />
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Phone" name="employee_phone"/>
+                        </div>
+                        <div class="form-group">
+                          <input type="password" class="form-control" name="employee_password" placeholder="Password" />
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" class="btnSubmit" value="Login" />
+                        </div>
+                        <div class="form-group">
+                            <a href="/employee_register" class="ForgetPwd">Not Registered?</a>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-4 login-form-3">
+                  <h3>Admin</h3>
+                  <form method="POST" action="/admin_login_button">
+                      <div class="form-group">
+                          <input type="text" class="form-control" name="admin_name" placeholder="Name" />
+                      </div>
+                      <div class="form-group">
+                          <input type="password" class="form-control" name="admin_password" placeholder="Password" />
+                      </div>
+                      <div class="form-group">
+                          <input type="submit" class="btnSubmit" value="Login" />
+                      </div>
+                      <div class="form-group">
+                      </div>
+                  </form>
+              </div>
+            </div>
+        </div>
 </body>
 </html>

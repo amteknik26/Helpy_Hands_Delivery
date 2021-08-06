@@ -37,7 +37,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="C:\Users\Dell\Documents\Helpy_Hands\virtual"
+VIRTUAL_ENV="D:\Amaan\Projects\DBMS Project\FINAL_BackEnd_done\helpy-hands\virtual"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

@@ -1,22 +1,184 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="{{url_for('static',filename='css/main_styles.css')}}" rel="stylesheet">
-    <title>Delivery Details</title>
+
+<html>
+  <head>
+    <title>Helpy Hands</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+    <script type="text/javafscript" src="http://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=lBGdiny-DVZEu-sHn23ae5n8RhqYAZSFlj1CSDIEGks2aAsfIRtodz-bA-9ky8JU" charset="UTF-8"></script>
+    <link rel="stylesheet" crossorigin="anonymous" href="http://gc.kis.v2.scr.kaspersky-labs.com/E3E8934C-235A-4B0E-825A-35A08381A191/abn/main.css?attr=aHR0cDovLzEyNy4wLjAuMTo1MDAwL2luZGV4" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- the below script was imported for star rating system-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> 
 </head>
 <body>
-  <header>
-    <nav>
-        <ul>
-            <li><a href="/index">Home</a></li>
-            <li><a href="/about">About</a></li>
-            <li><a href="/customer_menu">Menu</a></li>
+  <style>
+    .table-container{
+      margin-top: 5%;
+      margin-bottom: 1%;
+    }
+    .table-form{
+      height:auto;
+      width:auto;
+      
+    } 
+    .table-form,h1{
+      text-align: center;
+      color: #333;
+    }
+    .menu-container{
+      margin-top: 5%;
+      margin-bottom: 5%;
+    }
+    .menu-form{
+      min-height:400px;
+    } 
+    body {
+      font: 400 15px Lato, sans-serif;
+      line-height: 1.8;
+      color: #757575;
+    }
+    h2 {
+      font-size: 24px;
+      color: #303030;
+      font-weight: 600;
+      margin-bottom: 30px;
+      font-family: Montserrat, sans-serif;
+    }
+    h4,h3{
+      font-size: 19px;
+      line-height: 1.375em;
+      color: #303030;
+      font-weight: 400;
+      margin-bottom: 30px;
+      font-family: Montserrat, sans-serif;
+    }  
+    .bg-grey {
+      background-color: #f6f6f6;
+    }
+    .navbar {
+      margin-bottom: 0;
+      background-color: #04a6d5;
+      z-index: 9999;
+      border: 0;
+      font-size: 12px !important;
+      line-height: 1.42857143 !important;
+      letter-spacing: 4px;
+      border-radius: 0;
+      font-family: Montserrat, sans-serif;
+    }
+    .navbar li a, .navbar .navbar-brand {
+      color: #fff !important;
+    }
+    .navbar-nav li a:hover, .navbar-nav li.active a {
+      color: #04a6d5 !important;
+      background-color: #fff !important;
+    }
+    .navbar-default .navbar-toggle {
+      border-color: transparent;
+      color: #fff !important;
+    } 
+    .button {
+      background-color:  white;
+      color: black;
+      
+    } 
+    input{
+        text-align: center;
+        font-family: Montserrat, sans-serif;
+    }
+    .btn {
+    background-color: #037a9b; 
+    color: white;
+    font-size: 20px; 
+    cursor: pointer; 
+    border: 2px solid #008CBA;
+      font-family: Montserrat, sans-serif;
+      text-align: center;
+      text-decoration: none;
+      font-size: 16px;
+      cursor: pointer;
+      width: auto;
+      height : auto;
+  }
+  .btn:hover {
+    background-color: #04a6d5;
+  }
+  th, td {
+    text-align: left;
+    padding: 8px;
+  }
+  
+  tr:nth-child(even){background-color: #f2f2f2}
+  
+  th {
+    background-color:#037a9b;
+    color: white;
+  }
+  .txt-center {
+    text-align: center;
+}
+.rate {
+    float: left;
+    height: 46px;
+    padding: 0 10px;
+}
+.rate:not(:checked) > input {
+    position:absolute;
+    top:-9999px;
+}
+.rate:not(:checked) > label {
+    float:right;
+    width:1em;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:pointer;
+    font-size:30px;
+    color:#ccc;
+}
+.rate:not(:checked) > label:before {
+    content: '★ ';
+}
+.rate > input:checked ~ label {
+    color: #ffc700;    
+}
+.rate:not(:checked) > label:hover,
+.rate:not(:checked) > label:hover ~ label {
+    color: #deb217;  
+}
+.rate > input:checked + label:hover,
+.rate > input:checked + label:hover ~ label,
+.rate > input:checked ~ label:hover,
+.rate > input:checked ~ label:hover ~ label,
+.rate > label:hover ~ input:checked ~ label {
+    color: #c59b08;
+}
+  </style>
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>                        
+        </button>
+        <a class="navbar-brand" href="/index"><strong> HH </strong></a>
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="/index">HOME</a></li>
+          <li><a href="/customer_menu">MENU</a></li>
         </ul>
-    </nav>
-</header>
-    <h2 style="text-align: left; margin-top: 107px;">Delivery Details:</h2>
+      </div>
+    </div>
+</nav>
+<br><br>
+<div class="col-md-offset-2 col-md-6 table-form"  >
+    <h2 style="text-align: center; margin-top: 107px;">Delivery Details:</h2>
     <table style="border: 1px solid black; text-align: left;border-collapse: collapse;">
       <tr style="border: 1px solid black;">
           <th style="border: 1px solid black;">Employee Number</th>
@@ -47,11 +209,24 @@
           </form>
       {% endfor %}
   </table>
-  <form style="text-align: left; margin-top: 6%;" action='/customer_delivery_button' method="POST">
-  <h2> Give ratings (ranging from 1-5) after successful delivery:</h2>
-  <input  style="padding: 20px 0; background-color: #d3d3d1; padding: 10px 20px;" type="text" name="rating" placeholder="">
-    <br>  
-  <button style="margin-top: 50px;" type="submit" value="Submit">Submit</button>
-</form>
+
+  <form style="text-align: center; margin-top: 6%;" action='/customer_delivery_button' method="POST">
+  <h2> Please rate our service</h2>
+
+    <div class="rate">
+      <input type="radio" id="star5" name="rating" value="5" />
+      <label for="star5" title="text">5 stars</label>
+      <input type="radio" id="star4" name="rating" value="4" />
+      <label for="star4" title="text">4 stars</label>
+      <input type="radio" id="star3" name="rating" value="3" />
+      <label for="star3" title="text">3 stars</label>
+      <input type="radio" id="star2" name="rating" value="2" />
+      <label for="star2" title="text">2 stars</label>
+      <input type="radio" id="star1" name="rating" value="1" />
+      <label for="star1" title="text">1 star</label>
+    </div>
+    <button style="align-items: center;" type="submit" value="Submit" class="btn">Submit</button>
+</div>
 </body>
 </html>
+
